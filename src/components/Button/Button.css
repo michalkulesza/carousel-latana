@@ -1,0 +1,43 @@
+button {
+	background-color: transparent;
+	transition: all 0.15s ease-in-out;
+}
+
+.round {
+	height: 3rem;
+	width: 3rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid #31135e;
+	border-radius: 50%;
+}
+
+.round.alternate {
+	transform: rotate(-180deg);
+}
+
+.round:hover {
+	background-color: #31135e;
+}
+
+.round:hover > svg > path {
+	fill: #fff;
+}
+
+.secondary {
+	font-size: 1.12rem;
+	font-weight: 800;
+	line-height: 1.43rem;
+	color: #31135e;
+	padding: 0.68rem 1.03rem;
+	box-shadow: 0 0 0 1px #340d70;
+	border-radius: 4px;
+	box-sizing: border-box;
+	display: inline-block;
+	margin: 2px;
+}
+
+.secondary:hover {
+	box-shadow: 0 0 0 2px #340d70;
+}
