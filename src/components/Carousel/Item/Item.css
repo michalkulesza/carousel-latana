@@ -1,0 +1,30 @@
+.item__container {
+	transition: all 0.15s ease-in-out;
+	opacity: 0;
+}
+
+.item__image {
+	height: max-content;
+	width: 100%;
+	object-fit: cover;
+	margin-bottom: 2.25rem;
+}
+
+.item__image > img {
+	height: 100%;
+	width: 100%;
+}
+
+.item__heading {
+	margin-bottom: 1.25rem;
+}
+
+.item__content {
+	margin-bottom: 2.18rem;
+	white-space: pre-wrap;
+	margin-bottom: 0.62rem;
+}
+
+.item__content > p {
+	margin-bottom: 0.87rem;
+}
