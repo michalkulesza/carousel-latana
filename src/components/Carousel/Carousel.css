@@ -1,0 +1,35 @@
+.carousel__container {
+	padding: 5.43rem 0;
+}
+
+.carousel__header {
+	margin: 0 auto;
+	margin-bottom: 3.75rem;
+	width: 100%;
+}
+
+.carousel__heading {
+	margin-bottom: 0.5rem;
+}
+
+.carousel__contentWrapper {
+	margin-bottom: 5rem;
+	width: 100%;
+	position: relative;
+}
+
+.carousel__content {
+	position: absolute;
+	display: flex;
+	margin-bottom: 0.62rem;
+	transition: transform 0.15s ease-in-out, opacity 0.15s ease-in-out;
+}
+
+.carousel__buttons {
+	display: flex;
+	margin: 0 auto;
+}
+
+.carousel__buttons button:first-child {
+	margin-right: 1rem;
+}
