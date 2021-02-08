@@ -4,11 +4,15 @@ import "./Button.css";
 
 import { ReactComponent as Arrow } from "../../assets/icons/arrow.svg";
 
-const Button = ({ type = "secondary", direction = "default", children }) => {
+const Button = ({ type = "secondary", direction = "default", handler = () => null, children }) => {
+	const handleMouseDown = () => handler();
+
 	return type === "secondary" ? (
-		<button className="secondary">{children}</button>
+		<button className="secondary" onMouseDown={handleMouseDown}>
+			{children}
+		</button>
 	) : type === "arrow" ? (
-		<button className={`round ${direction}`}>
+		<button className={`round ${direction}`} onMouseDown={handleMouseDown}>
 			<Arrow />
 		</button>
 	) : null;
@@ -17,6 +21,7 @@ const Button = ({ type = "secondary", direction = "default", children }) => {
 Button.propTypes = {
 	type: PropTypes.oneOf(["arrow", "secondary"]),
 	direction: PropTypes.oneOf(["default", "alternate"]),
+	handler: PropTypes.func,
 	children: PropTypes.node,
 };
 
