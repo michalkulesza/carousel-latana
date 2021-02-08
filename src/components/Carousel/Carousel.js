@@ -120,7 +120,7 @@ const Carousel = ({ heading, subHeading, items = [], gap = 24, padding = 36, max
 							buttonSrc={item.buttonSrc}
 							width={itemWidth}
 							marginRight={gap}
-							opacity={i < itemsAddedToTheSide ? 0 : 1}
+							opacity={i < itemsAddedToTheSide ? 0 : i > itemsAddedToTheSide + itemsNum - 1 ? 0.2 : 1}
 						/>
 					))}
 				</div>
