@@ -13,6 +13,7 @@ const Item = ({
 	width,
 	marginRight = 16,
 	opacity = 1,
+	animationName,
 }) => {
 	const handleButton = () => {
 		console.log(`Redirecting to ${buttonSrc}...`);
@@ -21,7 +22,7 @@ const Item = ({
 	return (
 		<div
 			className="item__container"
-			style={{ width: `${width}px`, marginRight: `${marginRight}px`, opacity: `${opacity}` }}
+			style={{ width: `${width}px`, marginRight: `${marginRight}px`, opacity, animationName }}
 		>
 			<div className="item__image">
 				<img src={imageSrc} alt={imageAlt} />
@@ -47,6 +48,7 @@ Item.propTypes = {
 	marginRight: PropTypes.number,
 	buttonSrc: PropTypes.string,
 	opacity: PropTypes.number,
+	animationName: PropTypes.oneOf(["anim0to100", "anim20to100", "anim100to20", "anim100to0", ""]),
 };
 
 export default Item;

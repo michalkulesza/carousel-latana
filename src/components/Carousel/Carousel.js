@@ -14,10 +14,11 @@ const Carousel = ({ heading, subHeading, items = [], gap = 24, padding = 36, max
 	const contentRect = useRect(contentRef);
 	const minimumItemsNum = itemsNum * 3;
 
-	const [itemsAddedToTheSide, setItemsAddedToTheSide] = useState(undefined);
-	const [marginLeft, setMarginLeft] = useState(undefined);
+	const [itemsAddedToTheSide, setItemsAddedToTheSide] = useState(null);
+	const [marginLeft, setMarginLeft] = useState(null);
 	const [scrolledPixels, setScrolledPixels] = useState(0);
 	const [scrolledTiles, setScrolledTiles] = useState(0);
+	const [direction, setDirection] = useState(null);
 	const [data, setData] = useState(items);
 
 	const contentHeight = contentRect.height;
@@ -28,6 +29,19 @@ const Carousel = ({ heading, subHeading, items = [], gap = 24, padding = 36, max
 	const scrollable = data.length > itemsNum;
 	const carouselLeftMargin = containerSizeDifference > 0 ? containerSizeDifference / 2 : 0;
 	const itemWidth = (containerWidth - gap * itemsNum * 1.5 - padding) / itemsNum;
+
+	const getAnimationName = i =>
+		direction === "forward" && i === itemsAddedToTheSide + 2
+			? "anim20to100"
+			: direction === "forward" && i === itemsAddedToTheSide - 1
+			? "anim100to0"
+			: direction === "backward" && i === itemsAddedToTheSide + 3
+			? "anim100to20"
+			: direction === "backward" && i === itemsAddedToTheSide
+			? "anim0to100"
+			: "";
+
+	const getOpacity = i => (i < itemsAddedToTheSide ? 0 : i > itemsAddedToTheSide + itemsNum - 1 ? 0.2 : 1);
 
 	//Triple items to enable infinite scrolling, and save number of added items on each side
 	useEffect(() => {
@@ -71,6 +85,8 @@ const Carousel = ({ heading, subHeading, items = [], gap = 24, padding = 36, max
 
 			const newMarginLeft = marginLeft + itemWidth + gap;
 			setMarginLeft(newMarginLeft);
+
+			setDirection("forward");
 		}
 	};
 
@@ -89,6 +105,8 @@ const Carousel = ({ heading, subHeading, items = [], gap = 24, padding = 36, max
 
 			const newMarginLeft = marginLeft - itemWidth - gap;
 			setMarginLeft(newMarginLeft);
+
+			setDirection("backward");
 		}
 	};
 
@@ -104,7 +122,7 @@ const Carousel = ({ heading, subHeading, items = [], gap = 24, padding = 36, max
 					className="carousel__content"
 					style={{
 						marginLeft: `${carouselLeftMargin + marginLeft}px`,
-						padding: `${padding}px`,
+						padding: `0 ${padding}px`,
 						transform: `translateX(${scrolledPixels}px)`,
 					}}
 					ref={contentRef}
@@ -120,7 +138,8 @@ const Carousel = ({ heading, subHeading, items = [], gap = 24, padding = 36, max
 							buttonSrc={item.buttonSrc}
 							width={itemWidth}
 							marginRight={gap}
-							opacity={i < itemsAddedToTheSide ? 0 : i > itemsAddedToTheSide + itemsNum - 1 ? 0.2 : 1}
+							animationName={getAnimationName(i)}
+							opacity={getOpacity(i)}
 						/>
 					))}
 				</div>

@@ -21,7 +21,6 @@
 .carousel__content {
 	position: absolute;
 	display: flex;
-	margin-bottom: 0.62rem;
 	transition: transform 0.15s ease-in-out, opacity 0.15s ease-in-out;
 }
 

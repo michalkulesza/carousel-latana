@@ -1,6 +1,7 @@
 .item__container {
-	transition: all 0.15s ease-in-out;
-	opacity: 0;
+	animation-duration: 0.15s;
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: forwards;
 }
 
 .item__image {
@@ -27,4 +28,40 @@
 
 .item__content > p {
 	margin-bottom: 0.87rem;
+}
+
+@keyframes anim0to100 {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes anim100to20 {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0.2;
+	}
+}
+
+@keyframes anim20to100 {
+	from {
+		opacity: 0.2;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes anim100to0 {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
 }
