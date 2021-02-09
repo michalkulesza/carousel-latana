@@ -114,7 +114,7 @@ const Carousel = ({ heading, subHeading, items = [], gap = 24, padding = 36, max
 	useHorizontalSwipe(containerRef, handleScrollBackward, handleScrollForward);
 
 	return (
-		<div className="carousel__container" ref={containerRef}>
+		<section className="carousel__container" ref={containerRef}>
 			<div className="carousel__header" style={{ maxWidth: `${maxWidth}px`, padding: `0 ${padding}px` }}>
 				<h1 className="carousel__heading">{heading}</h1>
 				<h3>{subHeading}</h3>
@@ -149,11 +149,11 @@ const Carousel = ({ heading, subHeading, items = [], gap = 24, padding = 36, max
 			</div>
 			{scrollable && (
 				<div className="carousel__buttons" style={{ maxWidth: `${maxWidth}px`, padding: `0 ${padding}px` }}>
-					<Button type="arrow" direction="alternate" handler={handleScrollBackward}></Button>
-					<Button type="arrow" handler={handleScrollForward}></Button>
+					<Button type="arrow" direction="alternate" handler={handleScrollBackward} aria="BACK button"></Button>
+					<Button type="arrow" handler={handleScrollForward} aria="FORWARD button"></Button>
 				</div>
 			)}
-		</div>
+		</section>
 	);
 };
 
