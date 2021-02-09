@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import generateID from "../../helpers/generateID";
 import { useRect } from "../../hooks/useRect";
+import useHorizontalSwipe from "../../hooks/useHorizontalSwipe";
 import PropTypes from "prop-types";
 import "./Carousel.css";
 
@@ -109,6 +110,8 @@ const Carousel = ({ heading, subHeading, items = [], gap = 24, padding = 36, max
 			setDirection("backward");
 		}
 	};
+
+	useHorizontalSwipe(containerRef, handleScrollBackward, handleScrollForward);
 
 	return (
 		<div className="carousel__container" ref={containerRef}>
