@@ -32,17 +32,17 @@ const Carousel = ({ heading, subHeading, items = [], gap = 24, padding = 36, max
 	const itemWidth = (containerWidth - gap * itemsNum * 1.5 - padding) / itemsNum;
 
 	const getAnimationName = i =>
-		direction === "forward" && i === itemsAddedToTheSide + 2
+		direction === "forward" && i === itemsAddedToTheSide + itemsNum + 1
 			? "anim20to100"
-			: direction === "forward" && i === itemsAddedToTheSide - 1
+			: direction === "forward" && i === itemsAddedToTheSide + 1
 			? "anim100to0"
-			: direction === "backward" && i === itemsAddedToTheSide + 3
+			: direction === "backward" && i === itemsAddedToTheSide + itemsNum + 2
 			? "anim100to20"
-			: direction === "backward" && i === itemsAddedToTheSide
+			: direction === "backward" && i === itemsAddedToTheSide + 2
 			? "anim0to100"
 			: "";
 
-	const getOpacity = i => (i < itemsAddedToTheSide ? 0 : i > itemsAddedToTheSide + itemsNum - 1 ? 0.2 : 1);
+	const getOpacity = i => (i < itemsAddedToTheSide + 2 ? 0 : i > itemsAddedToTheSide + itemsNum + 1 ? 0.2 : 1);
 
 	//Triple items to enable infinite scrolling, and save number of added items on each side
 	useEffect(() => {
@@ -60,7 +60,7 @@ const Carousel = ({ heading, subHeading, items = [], gap = 24, padding = 36, max
 	useEffect(() => {
 		const setLeftMargin = () => {
 			if (itemsAddedToTheSide) {
-				const newMarginLeft = (itemWidth + gap) * itemsAddedToTheSide;
+				const newMarginLeft = (itemWidth + gap) * (itemsAddedToTheSide + 2);
 				setMarginLeft(-newMarginLeft);
 				setScrolledPixels(0);
 			}
