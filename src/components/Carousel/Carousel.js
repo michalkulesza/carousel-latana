@@ -111,7 +111,7 @@ const Carousel = ({ heading, subHeading, items = [], gap = 24, padding = 36, max
 		}
 	};
 
-	useHorizontalSwipe(containerRef, handleScrollBackward, handleScrollForward);
+	useHorizontalSwipe(contentRef, handleScrollBackward, handleScrollForward);
 
 	return (
 		<section className="carousel__container" ref={containerRef}>
